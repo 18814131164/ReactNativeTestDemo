@@ -8,7 +8,6 @@
  */
 
 #import "AppDelegate.h"
-
 #import "RCTBundleURLProvider.h"
 #import "RCTRootView.h"
 
@@ -19,13 +18,22 @@
   NSURL *jsCodeLocation;
 
   [[RCTBundleURLProvider sharedSettings] setDefaults];
-  [[RCTBundleURLProvider sharedSettings] setJsLocation:@"192.168.10.107"];
+  [[RCTBundleURLProvider sharedSettings] setJsLocation:@"192.168.0.104"];
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"ReactNativeTestDemo"
                                                initialProperties:nil
                                                    launchOptions:launchOptions];
+  
+  
+  NSArray *objects = [[NSBundle mainBundle] loadNibNamed:@"LaunchScreen" owner:self options:nil];
+  UIImageView *loadingView = [[[objects objectAtIndex:0] subviews] objectAtIndex:0];
+  loadingView = [[UIImageView alloc] initWithImage:[loadingView image]];
+  loadingView.frame = [UIScreen mainScreen].bounds;
+  
+  rootView.loadingView = loadingView;
+  
   rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
 
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
