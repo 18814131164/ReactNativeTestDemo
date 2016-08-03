@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "RCTBundleURLProvider.h"
 #import "RCTRootView.h"
+#import "RCTHotUpdate.h"
 
 @implementation AppDelegate
 
@@ -18,8 +19,15 @@
   NSURL *jsCodeLocation;
 
   [[RCTBundleURLProvider sharedSettings] setDefaults];
-  [[RCTBundleURLProvider sharedSettings] setJsLocation:@"192.168.0.104"];
+  
+  
+#if DEBUG
+  // 原来的jsCodeLocation
+  //[[RCTBundleURLProvider sharedSettings] setJsLocation:@"192.168.0.104"];
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
+#else
+  jsCodeLocation=[RCTHotUpdate bundleURL];
+#endif
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"ReactNativeTestDemo"

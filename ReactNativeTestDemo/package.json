@@ -7,6 +7,9 @@
   },
   "dependencies": {
     "react": "15.2.1",
-    "react-native": "0.29.2"
+    "react-native": "0.29.2",
+    "react-native-root-toast": "^1.0.3",
+    "react-native-update": "^2.0.1",
+    "react-native-vector-icons": "^2.0.3"
   }
 }

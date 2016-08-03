@@ -1,6 +1,8 @@
 package com.reactnativetestdemo;
 
 import com.facebook.react.ReactActivity;
+import cn.reactnative.modules.update.UpdatePackage;
+import com.oblador.vectoricons.VectorIconsPackage;
 
 public class MainActivity extends ReactActivity {
 
